@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$PROJECT_DIR$/src/main/resources/schema.sql" value="83d5a24a-0d7e-4670-9b3c-6fbbb2d4a19d" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/seed_users.sql" value="83d5a24a-0d7e-4670-9b3c-6fbbb2d4a19d" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/user_select_all.sql" value="83d5a24a-0d7e-4670-9b3c-6fbbb2d4a19d" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/user_select_part.sql" value="83d5a24a-0d7e-4670-9b3c-6fbbb2d4a19d" />
+  </component>
+</project>

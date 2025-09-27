@@ -1,0 +1,32 @@
+server:
+  port: 8888
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:seed_users.sql
+  config:
+    import: classpath:user-mapping.yml
+
+# OpenAPI / Swagger UI configuration for springdoc-openapi
+springdoc:
+  api-docs:
+    enabled: true
+    # Default path is /v3/api-docs; you can change it if needed
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    # Default UI is available at /swagger-ui/ and /swagger-ui.html

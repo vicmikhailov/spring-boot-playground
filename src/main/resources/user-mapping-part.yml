@@ -1,0 +1,35 @@
+data-view:
+  name: user-mapping-part
+  label: User Data Redacted
+  sqlPath: user_select_part.sql
+  fields:
+    - name: id
+      label: Id
+    - name: name
+      label: Name
+    - name: email
+      label: Email
+    - name: password
+      label: Password
+    - name: address
+      label: Address
+    - name: city
+      label: City
+    - name: state
+      label: State
+    - name: country
+      label: Country
+    - name: postalCode
+      label: Postal Code
+    - name: phone
+      label: Phone
+    - name: dateOfBirth
+      label: Date of Birth
+    - name: createdAt
+      label: Created At
+    - name: updatedAt
+      label: Updated At
+    - name: status
+      label: Status
+    - name: lastLogin
+      label: Last Login
