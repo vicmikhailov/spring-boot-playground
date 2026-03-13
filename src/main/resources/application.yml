@@ -11,8 +11,12 @@ spring:
     console:
       enabled: true
   jpa:
+    show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
   sql:
     init:
       mode: always
@@ -20,6 +24,11 @@ spring:
       data-locations: classpath:seed_users.sql
   config:
     import: classpath:user-mapping.yml
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
 
 # OpenAPI / Swagger UI configuration for springdoc-openapi
 springdoc:

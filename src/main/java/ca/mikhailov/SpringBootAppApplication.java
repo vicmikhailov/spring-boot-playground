@@ -1,4 +1,4 @@
-package ca.mikhailov.dataview;
+package ca.mikhailov;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

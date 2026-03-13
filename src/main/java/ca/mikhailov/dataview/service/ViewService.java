@@ -1,9 +1,9 @@
 package ca.mikhailov.dataview.service;
 
 import ca.mikhailov.dataview.model.RecordView;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface ViewService {
-    List<RecordView> findAll();
+    Page<RecordView> findAll(Pageable pageable);
 }

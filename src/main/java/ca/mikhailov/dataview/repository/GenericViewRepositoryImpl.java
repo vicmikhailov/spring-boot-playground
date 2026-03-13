@@ -4,6 +4,9 @@ import ca.mikhailov.dataview.model.Field;
 import ca.mikhailov.dataview.model.RecordView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.stereotype.Repository;
@@ -25,17 +28,30 @@ public class GenericViewRepositoryImpl implements GenericViewRepository {
     }
 
     @Override
-    public List<RecordView> findAll() {
-        String sql = "SELECT * FROM users";
-        ResultSetExtractor<List<RecordView>> rse = new ListResultSetExtractor();
-        return jdbcTemplate.query(sql, rse);
+    public Page<RecordView> findAll(Pageable pageable) {
+        long offset = pageable.getOffset();
+        int pageSize = pageable.getPageSize();
+        String sql = "SELECT * FROM users LIMIT ? OFFSET ?";
+        ResultSetExtractor<List<RecordView>> rse = new ListResultSetExtractor((int) offset);
+        List<RecordView> records = jdbcTemplate.query(sql, rse, pageSize, offset);
+
+        String countSql = "SELECT count(*) FROM users";
+        Long total = jdbcTemplate.queryForObject(countSql, Long.class);
+
+        return new PageImpl<>(records, pageable, total != null ? total : 0);
     }
 
     private static class ListResultSetExtractor implements ResultSetExtractor<List<RecordView>> {
+        private final int offset;
+
+        public ListResultSetExtractor(int offset) {
+            this.offset = offset;
+        }
+
         @Override
         public List<RecordView> extractData(ResultSet rs) throws SQLException, DataAccessException {
             List<RecordView> records = new ArrayList<>();
-            long seq = 1L;
+            long seq = offset + 1L;
             while (rs.next()) {
                 List<Field> fields = new ArrayList<>();
                 ResultSetMetaData meta = rs.getMetaData();

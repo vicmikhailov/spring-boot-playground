@@ -1,11 +1,11 @@
 package ca.mikhailov.dataview.repository;
 
 import ca.mikhailov.dataview.model.User;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface UserRepository {
-    List<User> findAll();
+    Page<User> findAll(Pageable pageable);
 
     User findById(Long id);
 }

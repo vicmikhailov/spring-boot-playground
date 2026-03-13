@@ -1,11 +1,11 @@
 package ca.mikhailov.dataview.service;
 
 import ca.mikhailov.dataview.model.User;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface UserService {
-    List<User> getAllUsers();
+    Page<User> getAllUsers(Pageable pageable);
 
     User getUserById(Long id);
 }
